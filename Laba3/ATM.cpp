@@ -27,7 +27,6 @@ int main() {
 	ch.Operation();
 	Card card(ch.GetChosen());
 	card.SetCardChosen(ch.GetChosen());
-	//cout << card.GetCardChosen();
 
 	system("pause");
 
