@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Card.h"
 
-//конструктор -----  ввод данных о карточке из файлика
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ -----  РІРІРѕРґ РґР°РЅРЅС‹С… Рѕ РєР°СЂС‚РѕС‡РєРµ РёР· С„Р°Р№Р»РёРєР°
 Card::Card(int n) {
 	int chosen = n;
 	string card_number = "no";
@@ -57,18 +57,18 @@ Card::Card(int n) {
 }
 
 
-// вывод данных о карточке
+// РІС‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ РєР°СЂС‚РѕС‡РєРµ
 void Card::Print(Singleton* log) {
 	cout << "\t-------------------------" << endl;
-	cout << "\t     Данные карты: " << endl;
+	cout << "\t     Р”Р°РЅРЅС‹Рµ РєР°СЂС‚С‹: " << endl;
 	cout << "\t-------------------------" << endl;
 	
-	cout << "\tНомер карточки: ";// << GetNumber() << endl;
+	cout << "\tРќРѕРјРµСЂ РєР°СЂС‚РѕС‡РєРё: ";// << GetNumber() << endl;
 	Secret(GetNumber());
-	cout << "\tВладелец карточки: " << GetHolder() << endl;
-	cout << "\tСрок эксплутации: " << GetCardData() << endl;
-	cout << "\tДоступные средства: " << GetBalance() << endl;
-	log->SingletonOperation("Данные банковской карточки", 1);
+	cout << "\tР’Р»Р°РґРµР»РµС† РєР°СЂС‚РѕС‡РєРё: " << GetHolder() << endl;
+	cout << "\tРЎСЂРѕРє СЌРєСЃРїР»СѓС‚Р°С†РёРё: " << GetCardData() << endl;
+	cout << "\tР”РѕСЃС‚СѓРїРЅС‹Рµ СЃСЂРµРґСЃС‚РІР°: " << GetBalance() << endl;
+	log->SingletonOperation("Р”Р°РЅРЅС‹Рµ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚РѕС‡РєРё", 1);
 }
 
 void Card::Secret(string s) {
