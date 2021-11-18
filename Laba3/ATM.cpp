@@ -33,7 +33,6 @@ int main() {
 
 	//если пароль правильный РАБОТАЕМ!
 	if (b.CheckPin(log, ch.GetChosen(), card)) {
-		//MenuOperations a;
 		MenuOperations::Print(log, card);
 	}
 
