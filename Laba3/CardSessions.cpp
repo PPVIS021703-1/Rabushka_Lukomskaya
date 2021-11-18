@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// пауза
+// РїР°СѓР·Р°
 void CardSessions::PauseF() {
 	cout << "\t. ";
 	Sleep(1000);
@@ -18,19 +18,19 @@ void CardSessions::PauseF() {
 	cout << endl;
 }
 
-// снять деньги с карточки
+// СЃРЅСЏС‚СЊ РґРµРЅСЊРіРё СЃ РєР°СЂС‚РѕС‡РєРё
 void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 	double money;
 	card.CopyData();
 	//ofstream record_("card.txt");
 
 	
-	cout << "\tВведите сумму выдачи: ";
+	cout << "\tР’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІС‹РґР°С‡Рё: ";
 	cin >> money;
 	try {
 		if (money > card.GetBalance() || money < 0) {
-			log->SingletonOperation("Выдача наличных", 0);
-			throw Exception("Некорректно введенные данные", "Выдача наличных");
+			log->SingletonOperation("Р’С‹РґР°С‡Р° РЅР°Р»РёС‡РЅС‹С…", 0);
+			throw Exception("РќРµРєРѕСЂСЂРµРєС‚РЅРѕ РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ", "Р’С‹РґР°С‡Р° РЅР°Р»РёС‡РЅС‹С…");
 		}
 		else {
 
@@ -107,30 +107,30 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 			record_.close();
 
 
-			log->SingletonOperation("Выдача наличных", 1);
+			log->SingletonOperation("Р’С‹РґР°С‡Р° РЅР°Р»РёС‡РЅС‹С…", 1);
 			PauseF();
-			cout << endl << "\tЗаберите ваши деньги!" << endl;
+			cout << endl << "\tР—Р°Р±РµСЂРёС‚Рµ РІР°С€Рё РґРµРЅСЊРіРё!" << endl;
 			PauseF();
-			cout << endl << "\tЖелаете забрать чек? " << endl;
-			cout << "\t1 - Да" << endl << "\t2 - Нет" << endl;
+			cout << endl << "\tР–РµР»Р°РµС‚Рµ Р·Р°Р±СЂР°С‚СЊ С‡РµРє? " << endl;
+			cout << "\t1 - Р”Р°" << endl << "\t2 - РќРµС‚" << endl;
 			int k;
 			cin >> k;
 			switch (k) {
 			case 1: {
-				log->SingletonOperation("Выдача чека", 1);
+				log->SingletonOperation("Р’С‹РґР°С‡Р° С‡РµРєР°", 1);
 				time_t now = time(0);
 				tm* t = new tm;
 				localtime_s(t, &now);
 
-				cout << "\tЗаберите ваш чек!" << endl << endl;
+				cout << "\tР—Р°Р±РµСЂРёС‚Рµ РІР°С€ С‡РµРє!" << endl << endl;
 				cout << "\t--------------------" << endl;
-				cout << "\tКод операции: 002" << endl;
-				cout << "\tДата: ";
+				cout << "\tРљРѕРґ РѕРїРµСЂР°С†РёРё: 002" << endl;
+				cout << "\tР”Р°С‚Р°: ";
 				if (t->tm_mday < 10) cout << "0" << t->tm_mday << ".";
 				else cout << t->tm_mday << ".";
 				cout << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-				cout << "\tВремя: ";
+				cout << "\tР’СЂРµРјСЏ: ";
 				if (t->tm_hour < 10) cout << "0" << t->tm_hour << ":";
 				else cout << t->tm_hour << ":";
 				if (t->tm_min < 10) cout << "0" << t->tm_min << ":";
@@ -138,7 +138,7 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 				if (t->tm_sec < 10) cout << "0" << t->tm_sec << endl;
 				else cout << t->tm_sec << endl;
 				
-				cout << "\tСумма выдачи: " << money << endl;
+				cout << "\tРЎСѓРјРјР° РІС‹РґР°С‡Рё: " << money << endl;
 				cout << "\t--------------------" << endl;
 				PauseF();
 				cout << endl;
@@ -170,10 +170,10 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 	//remove("newcard.txt");
 }
 
-// положить деньги на карточку
+// РїРѕР»РѕР¶РёС‚СЊ РґРµРЅСЊРіРё РЅР° РєР°СЂС‚РѕС‡РєСѓ
 void GetMoney::MoneyIn(Card& card, Singleton* log) {
 	double money;
-	cout << "\tВставьте купюру: ";
+	cout << "\tР’СЃС‚Р°РІСЊС‚Рµ РєСѓРїСЋСЂСѓ: ";
 	cin >> money;
 	//ofstream record("card.txt");
 	double new_money = card.GetBalance() + money;
@@ -251,19 +251,19 @@ void GetMoney::MoneyIn(Card& card, Singleton* log) {
 
 	cout << endl;
 	PauseF();
-	cout << "\tОдобрено! Операция выполнена успешно!" << endl;
+	cout << "\tРћРґРѕР±СЂРµРЅРѕ! РћРїРµСЂР°С†РёСЏ РІС‹РїРѕР»РЅРµРЅР° СѓСЃРїРµС€РЅРѕ!" << endl;
 	//record.close();
 	ToFileIn(card, money);
-	log->SingletonOperation("Перевод средств на карточку", 1);
+	log->SingletonOperation("РџРµСЂРµРІРѕРґ СЃСЂРµРґСЃС‚РІ РЅР° РєР°СЂС‚РѕС‡РєСѓ", 1);
 }
 
-// оплата с карточки на счёт за услуги
+// РѕРїР»Р°С‚Р° СЃ РєР°СЂС‚РѕС‡РєРё РЅР° СЃС‡С‘С‚ Р·Р° СѓСЃР»СѓРіРё
 void Payement::Pay(Card& card, Bankomat& bank) {
 	double money;
 	bank.CopyAccount();
 	card.CopyData();
 	ofstream record("ac.txt");
-	cout << "\tВведите пин-код: ";
+	cout << "\tР’РІРµРґРёС‚Рµ РїРёРЅ-РєРѕРґ: ";
 	int pin;
 	cin >> pin;
 	for (int i = 3; i >= 1; i--) {
@@ -273,12 +273,12 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 				cout << pin << endl;
 			}
 			else if(pin == card.GetCardPin()) {
-				cout << "\tВведите сумму перевода: ";
+				cout << "\tР’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїРµСЂРµРІРѕРґР°: ";
 				cin >> money;
 				try {
 
 					if (money < 0) {
-						throw Exception("Неверный формат ввода", "Оплата услуг");
+						throw Exception("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°", "РћРїР»Р°С‚Р° СѓСЃР»СѓРі");
 					}
 					else {
 						card.CopyData();
@@ -373,8 +373,8 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 								
 
 								PauseF();
-								cout << endl << "\tЖелаете забрать чек? " << endl;
-								cout << "\t1 - Да" << endl << "\t2 - Нет" << endl;
+								cout << endl << "\tР–РµР»Р°РµС‚Рµ Р·Р°Р±СЂР°С‚СЊ С‡РµРє? " << endl;
+								cout << "\t1 - Р”Р°" << endl << "\t2 - РќРµС‚" << endl;
 								int k;
 								cin >> k;
 								switch (k) {
@@ -383,15 +383,15 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 									tm* t = new tm;
 									localtime_s(t, &now);
 
-									cout << "\tЗаберите ваш чек!" << endl << endl;
+									cout << "\tР—Р°Р±РµСЂРёС‚Рµ РІР°С€ С‡РµРє!" << endl << endl;
 									cout << "\t--------------------" << endl;
-									cout << "\tКод операции: 001" << endl;
-									cout << "Дата: ";
+									cout << "\tРљРѕРґ РѕРїРµСЂР°С†РёРё: 001" << endl;
+									cout << "Р”Р°С‚Р°: ";
 									if (t->tm_mday < 10) cout << "0" << t->tm_mday << ".";
 									else cout << t->tm_mday << ".";
 									cout << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-									cout << "Время: ";
+									cout << "Р’СЂРµРјСЏ: ";
 									if (t->tm_hour < 10) cout << "0" << t->tm_hour << ":";
 									else cout << t->tm_hour << ":";
 									if (t->tm_min < 10) cout << "0" << t->tm_min << ":";
@@ -399,8 +399,8 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 									if (t->tm_sec < 10) cout << "0" << t->tm_sec << endl;
 									else cout << t->tm_sec << endl;
 
-									cout << "\tСчет получателя: " << acc_number << endl;
-									cout << "\tСумма перевода: " << money << endl;
+									cout << "\tРЎС‡РµС‚ РїРѕР»СѓС‡Р°С‚РµР»СЏ: " << acc_number << endl;
+									cout << "\tРЎСѓРјРјР° РїРµСЂРµРІРѕРґР°: " << money << endl;
 									cout << "\t--------------------" << endl;
 									PauseF();
 									cout << endl;
@@ -437,12 +437,12 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 	//system("cls");
 }
 
-// сменить пароль на карточке
+// СЃРјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ РЅР° РєР°СЂС‚РѕС‡РєРµ
 void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 	bool flag;
 	for (int i = 3; i >= 1; i--)
 	{
-		cout << "\tВведите старый пин-код: ";
+		cout << "\tР’РІРµРґРёС‚Рµ СЃС‚Р°СЂС‹Р№ РїРёРЅ-РєРѕРґ: ";
 		int old_pin, new_pin;
 		cin >> old_pin;
 
@@ -451,14 +451,14 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 			card.CopyData();
 			/*ifstream read("newcard.txt");
 			ofstream record("card.txt");*/
-			cout << "\tВведите новый пин-код: ";
+			cout << "\tР’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РїРёРЅ-РєРѕРґ: ";
 			try {
 				cin >> new_pin;
 				if (new_pin > 9999) {
-					throw Exception("Неверный ввод пин-код", "Смена пин-код");
+					throw Exception("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ РїРёРЅ-РєРѕРґ", "РЎРјРµРЅР° РїРёРЅ-РєРѕРґ");
 				}
 				card.SetCardPin(new_pin);
-				cout << "\tОперация выполнена успешно!" << endl;
+				cout << "\tРћРїРµСЂР°С†РёСЏ РІС‹РїРѕР»РЅРµРЅР° СѓСЃРїРµС€РЅРѕ!" << endl;
 			}
 			catch (Exception& exception) {
 				cerr << exception.what() << endl;
@@ -537,7 +537,7 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 			from_card.close();
 			record_.close();
 
-			log->SingletonOperation("Смена пин-код", 1);
+			log->SingletonOperation("РЎРјРµРЅР° РїРёРЅ-РєРѕРґ", 1);
 			break;
 		}
 
@@ -545,14 +545,14 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 			flag = 0;
 			if (i - 1 == 0) break;
 			else {
-				log->SingletonOperation("Попытка смены пин-код", 0);
-				cout << "\tНеверный пин-код! Попробуйте ещё раз! Осталось попыток: " << i - 1 << endl;
+				log->SingletonOperation("РџРѕРїС‹С‚РєР° СЃРјРµРЅС‹ РїРёРЅ-РєРѕРґ", 0);
+				cout << "\tРќРµРІРµСЂРЅС‹Р№ РїРёРЅ-РєРѕРґ! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·! РћСЃС‚Р°Р»РѕСЃСЊ РїРѕРїС‹С‚РѕРє: " << i - 1 << endl;
 			}
 		}
 	}
 	if (flag == 0) {
-		log->SingletonOperation("Смена пин-код", 0);
-		cout << "\tНеверный пин-код. Попробуйте позже!" << endl;
+		log->SingletonOperation("РЎРјРµРЅР° РїРёРЅ-РєРѕРґ", 0);
+		cout << "\tРќРµРІРµСЂРЅС‹Р№ РїРёРЅ-РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·Р¶Рµ!" << endl;
 	}
 	cout << endl;
 }
