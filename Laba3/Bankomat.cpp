@@ -23,12 +23,11 @@ Bankomat::Bankomat() {
 	}
 	from_acc.close();
 }
-
 void Bankomat::Print(Singleton* log) {
 	cout << "\t-------------------------------------" << endl;
-	cout << "\t     Äàííûå áàíêîâñêîãî ñ÷åòà: " << endl;
+	cout << "\t     Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð±Ð°Ð½ÐºÐ¾Ð²ÑÐºÐ¾Ð³Ð¾ ÑÑ‡ÐµÑ‚Ð°: " << endl;
 	cout << "\t-------------------------------------" << endl;
-	cout << "\tÍîìåð ñ÷åòà: " << GetNumber() << endl;
-	cout << "\tÂëàäåëåö ñ÷åòà: " << GetHolder() << endl;
-	cout << "\tÄîñòóïíûå ñðåäñòâà: " << GetBalance() << endl;
+	cout << "\tÐÐ¾Ð¼ÐµÑ€ ÑÑ‡ÐµÑ‚Ð°: " << GetNumber() << endl;
+	cout << "\tÐ’Ð»Ð°Ð´ÐµÐ»ÐµÑ† ÑÑ‡ÐµÑ‚Ð°: " << GetHolder() << endl;
+	cout << "\tÐ”Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ðµ ÑÑ€ÐµÐ´ÑÑ‚Ð²Ð°: " << GetBalance() << endl;
 }
