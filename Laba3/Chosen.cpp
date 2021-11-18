@@ -8,7 +8,7 @@ void Chosen::SetChosen(int n) {
 }
 
 void Chosen::Operation() {
-	cout << "\tÂûáåðèòå êàðòî÷êó:" << endl;
+	cout << "\tÐ’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ°Ñ€Ñ‚Ð¾Ñ‡ÐºÑƒ:" << endl;
 	cout << "\t1 - RABUSHKA ALESIA" << endl;
 	cout << "\t2 - LUKOMSKAYA ELIZAVETA" << endl;
 	cout << "\t3 - IVANOVA EKATERINA" << endl;
