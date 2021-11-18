@@ -9,7 +9,7 @@
 class CardSessions {
 
 public:
-	//для вывода с паузой
+	
 	static void PauseF();
 };
 
@@ -23,8 +23,8 @@ public:
 // CHANGE CARD PIN CLASS
 class ChangePin : public Bank{
 public:
-	//смена пин-кода на карточке
-	static void ChangeCardPin(Card&, int, Singleton*);//нестатическая ссылка на член должна указываться относительно заданного объекта, а мы его не создаём)
+	
+	static void ChangeCardPin(Card&, int, Singleton*);
 };
 
 // GET MONEY CLASS (TO CARD)
