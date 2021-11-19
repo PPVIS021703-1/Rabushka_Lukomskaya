@@ -9,7 +9,7 @@
 using namespace std;
 
 
-// выписка о пополнении средств карточки
+// РІС‹РїРёСЃРєР° Рѕ РїРѕРїРѕР»РЅРµРЅРёРё СЃСЂРµРґСЃС‚РІ РєР°СЂС‚РѕС‡РєРё
 void Statement::ToFileIn(Card& card, double money) {
 	ofstream record("statement.txt", ios::app);
 
@@ -19,14 +19,14 @@ void Statement::ToFileIn(Card& card, double money) {
 
 	if (record) {
 		record << "\t--------------------------------" << endl;
-		record << "\tПополнение средств:" << endl;
+		record << "\tРџРѕРїРѕР»РЅРµРЅРёРµ СЃСЂРµРґСЃС‚РІ:" << endl;
 
-		record << "\tДата: ";
+		record << "\tР”Р°С‚Р°: ";
 		if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 		else record << t->tm_mday << ".";
 		record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-		record << "\tВремя: ";
+		record << "\tР’СЂРµРјСЏ: ";
 		if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 		else record << t->tm_hour << ":";
 		if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -34,16 +34,16 @@ void Statement::ToFileIn(Card& card, double money) {
 		if (t->tm_sec < 10) record << "0" << t->tm_sec << endl;
 		else record << t->tm_sec << endl;
 
-		record << "\tНомер карты: " << card.GetNumber() << endl;
-		record << "\tСумма операции: " << money << endl;
-		record << "\tДоступные средства: " << card.GetBalance() << endl;
+		record << "\tРќРѕРјРµСЂ РєР°СЂС‚С‹: " << card.GetNumber() << endl;
+		record << "\tРЎСѓРјРјР° РѕРїРµСЂР°С†РёРё: " << money << endl;
+		record << "\tР”РѕСЃС‚СѓРїРЅС‹Рµ СЃСЂРµРґСЃС‚РІР°: " << card.GetBalance() << endl;
 		record << "\t--------------------------------" << endl;
 	}
 
 	record.close();
 }
 
-// выписка о снятии средств с карточки
+// РІС‹РїРёСЃРєР° Рѕ СЃРЅСЏС‚РёРё СЃСЂРµРґСЃС‚РІ СЃ РєР°СЂС‚РѕС‡РєРё
 void Statement::ToFileFrom(Card& card, double money) {
 	ofstream record("statement.txt", ios::app);
 	time_t now = time(0);
@@ -51,14 +51,14 @@ void Statement::ToFileFrom(Card& card, double money) {
 	localtime_s(t, &now);
 	if (record) {
 		record << "\t--------------------------------" << endl;
-		record << "\tСнятие средств:" << endl;
+		record << "\tРЎРЅСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ:" << endl;
 
-		record << "\tДата: ";
+		record << "\tР”Р°С‚Р°: ";
 		if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 		else record << t->tm_mday << ".";
 		record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-		record << "\tВремя: ";
+		record << "\tР’СЂРµРјСЏ: ";
 		if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 		else record << t->tm_hour << ":";
 		if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -66,16 +66,16 @@ void Statement::ToFileFrom(Card& card, double money) {
 		if (t->tm_sec < 10) record << "0" << t->tm_sec << endl;
 		else record << t->tm_sec << endl;
 
-		record << "\tНомер карты : " << card.GetNumber() << endl;
-		record << "\tСумма операции: " << money << endl;
-		record << "\tОстаток средств: " << card.GetBalance() << endl;
+		record << "\tРќРѕРјРµСЂ РєР°СЂС‚С‹ : " << card.GetNumber() << endl;
+		record << "\tРЎСѓРјРјР° РѕРїРµСЂР°С†РёРё: " << money << endl;
+		record << "\tРћСЃС‚Р°С‚РѕРє СЃСЂРµРґСЃС‚РІ: " << card.GetBalance() << endl;
 		record << "\t--------------------------------" << endl;
 	}
 
 	record.close();
 }
 
-//выписка о пополнении счета в банке
+//РІС‹РїРёСЃРєР° Рѕ РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° РІ Р±Р°РЅРєРµ
 void Statement::ToFileIn(Bankomat& bank, double money) {
 	ofstream record("statement.txt", ios::app);
 	time_t now = time(0);
@@ -83,14 +83,14 @@ void Statement::ToFileIn(Bankomat& bank, double money) {
 	localtime_s(t, &now);
 	if (record) {
 		record << "\t--------------------------------" << endl;
-		record << "\tПополнение счета:" << endl;
+		record << "\tРџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°:" << endl;
 
-		record << "\tДата: ";
+		record << "\tР”Р°С‚Р°: ";
 		if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 		else record << t->tm_mday << ".";
 		record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-		record << "\tВремя: ";
+		record << "\tР’СЂРµРјСЏ: ";
 		if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 		else record << t->tm_hour << ":";
 		if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -98,16 +98,16 @@ void Statement::ToFileIn(Bankomat& bank, double money) {
 		if (t->tm_sec < 10) record << "0" << t->tm_sec << endl;
 		else record << t->tm_sec << endl;
 
-		record << "\tСчет получателя: " << bank.GetNumber() << endl;
-		record << "\tСумма операции: " << money << endl;
-		record << "\tДоступные средства: " << bank.GetBalance() << endl;
+		record << "\tРЎС‡РµС‚ РїРѕР»СѓС‡Р°С‚РµР»СЏ: " << bank.GetNumber() << endl;
+		record << "\tРЎСѓРјРјР° РѕРїРµСЂР°С†РёРё: " << money << endl;
+		record << "\tР”РѕСЃС‚СѓРїРЅС‹Рµ СЃСЂРµРґСЃС‚РІР°: " << bank.GetBalance() << endl;
 		record << "\t--------------------------------" << endl;
 	}
 
 	record.close();
 }
 
-// вывод выписки
+// РІС‹РІРѕРґ РІС‹РїРёСЃРєРё
 void Statement::Print(Singleton* log) {
 	ifstream read("statement.txt");
 
@@ -120,6 +120,6 @@ void Statement::Print(Singleton* log) {
 	}
 
 	read.close();
-	log->SingletonOperation("Предоставление выписки", 1);
+	log->SingletonOperation("РџСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёРµ РІС‹РїРёСЃРєРё", 1);
 }
 
