@@ -8,8 +8,8 @@ using namespace std;
 class Exception
 {
 private:
-	string error_str; //название ошибки
-	string error_type; //тип (при вводе пин-код...и тд)
+	string error_str; 
+	string error_type; 
 
 public:
 	Exception(string error) :error_str(error) {};
@@ -25,12 +25,12 @@ public:
 		ofstream record("log.txt", ios::app);
 		if (record) {
 			record << "Error: " << error_type << endl;
-			record << "Дата: ";
+			record << "Г„Г ГІГ : ";
 			if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 			else record << t->tm_mday << ".";
 			record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-			record << "Время: ";
+			record << "Г‚Г°ГҐГ¬Гї: ";
 			if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 			else record << t->tm_hour << ":";
 			if (t->tm_min < 10) record << "0" << t->tm_min << ":";
