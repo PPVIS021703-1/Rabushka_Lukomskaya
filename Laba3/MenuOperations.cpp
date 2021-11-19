@@ -6,30 +6,25 @@
 
 using namespace std;
 
-// метод всей проги
+// РјРµС‚РѕРґ РІСЃРµР№ РїСЂРѕРіРё
 void MenuOperations::Print(Singleton* log, Card& card) {
 
 	while (true) {
-		cout << "\tВыберите операцию:" << endl;
-		cout << "\t1 - Данные банковской карты" << endl;
-		cout << "\t2 - Выдача наличных" << endl;
-		cout << "\t3 - Валютные операции" << endl;
-		cout << "\t4 - Смена пин-кода" << endl;
-		cout << "\t5 - Добавить средства на карточку" << endl;
-		cout << "\t6 - Перевести средства на счет в банке" << endl;
-		cout << "\t7 - Данные банковского счета" << endl;
-		cout << "\t8 - Предоставить выписку" << endl;
-		cout << "\t0 - Забрать карту и закончить работу" << endl;
+		cout << "\tР’С‹Р±РµСЂРёС‚Рµ РѕРїРµСЂР°С†РёСЋ:" << endl;
+		cout << "\t1 - Р”Р°РЅРЅС‹Рµ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚С‹" << endl;
+		cout << "\t2 - Р’С‹РґР°С‡Р° РЅР°Р»РёС‡РЅС‹С…" << endl;
+		cout << "\t3 - Р’Р°Р»СЋС‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё" << endl;
+		cout << "\t4 - РЎРјРµРЅР° РїРёРЅ-РєРѕРґР°" << endl;
+		cout << "\t5 - Р”РѕР±Р°РІРёС‚СЊ СЃСЂРµРґСЃС‚РІР° РЅР° РєР°СЂС‚РѕС‡РєСѓ" << endl;
+		cout << "\t6 - РџРµСЂРµРІРµСЃС‚Рё СЃСЂРµРґСЃС‚РІР° РЅР° СЃС‡РµС‚ РІ Р±Р°РЅРєРµ" << endl;
+		cout << "\t7 - Р”Р°РЅРЅС‹Рµ Р±Р°РЅРєРѕРІСЃРєРѕРіРѕ СЃС‡РµС‚Р°" << endl;
+		cout << "\t8 - РџСЂРµРґРѕСЃС‚Р°РІРёС‚СЊ РІС‹РїРёСЃРєСѓ" << endl;
+		cout << "\t0 - Р—Р°Р±СЂР°С‚СЊ РєР°СЂС‚Сѓ Рё Р·Р°РєРѕРЅС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ" << endl;
 		int k;
-		//cout << card.GetHolder();
+		
 		cin >> k;
-		//int n = Chosen::GetChosen();
-		//cout << "Chosen " << n << endl;
-		//Card card(3);
 		
 		Bankomat bank;
-		//system("pause");
-		//Bankomat bank;
 
 		switch (k) {
 		case 1: {
@@ -47,10 +42,10 @@ void MenuOperations::Print(Singleton* log, Card& card) {
 			system("cls");
 			int a;
 			while (true) {
-				cout << "\tВыберите операцию:" << endl;
-				cout << "\t1 - Курс валюты" << endl;
-				cout << "\t2 - Выдача наличных иностранной валюты" << endl;
-				cout << "\t0 - Вернуться в главное меню" << endl;
+				cout << "\tР’С‹Р±РµСЂРёС‚Рµ РѕРїРµСЂР°С†РёСЋ:" << endl;
+				cout << "\t1 - РљСѓСЂСЃ РІР°Р»СЋС‚С‹" << endl;
+				cout << "\t2 - Р’С‹РґР°С‡Р° РЅР°Р»РёС‡РЅС‹С… РёРЅРѕСЃС‚СЂР°РЅРЅРѕР№ РІР°Р»СЋС‚С‹" << endl;
+				cout << "\t0 - Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ" << endl;
 				cin >> a;
 				switch (a)
 				{
@@ -69,7 +64,7 @@ void MenuOperations::Print(Singleton* log, Card& card) {
 					break;
 				}
 				default:
-					cout << "\tНеверный номер операции! Попробуйте еще раз." << endl;
+					cout << "\tРќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РѕРїРµСЂР°С†РёРё! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·." << endl;
 					break;
 				}
 				break;
@@ -100,19 +95,19 @@ void MenuOperations::Print(Singleton* log, Card& card) {
 		}
 		case 8: {
 			system("cls");
-			cout << "\t\t Выписка: " << endl;
+			cout << "\t\t Р’С‹РїРёСЃРєР°: " << endl;
 			Statement::Print(log);
 			break;
 		}
 		case 0: {
 			system("cls");
 			cout << endl << endl << endl << endl << endl << endl << endl;
-			cout << "\t\t\t\t\t Заберите вашу карту!" << endl;
-			log->SingletonOperation("Завершение сессии", 1);
+			cout << "\t\t\t\t\t Р—Р°Р±РµСЂРёС‚Рµ РІР°С€Сѓ РєР°СЂС‚Сѓ!" << endl;
+			log->SingletonOperation("Р—Р°РІРµСЂС€РµРЅРёРµ СЃРµСЃСЃРёРё", 1);
 			CardSessions::PauseF();
 			system("cls");
 			cout << endl << endl << endl << endl << endl << endl << endl;
-			cout << "\t\t\t\t Спасибо, что воспользовались нашим банкоматом!" << endl;
+			cout << "\t\t\t\t РЎРїР°СЃРёР±Рѕ, С‡С‚Рѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ РЅР°С€РёРј Р±Р°РЅРєРѕРјР°С‚РѕРј!" << endl;
 			cout << endl << endl << endl << endl << endl << endl << endl;
 			exit(0);
 		}
