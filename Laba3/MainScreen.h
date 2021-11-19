@@ -9,13 +9,13 @@ using namespace std;
 
 class MainScreen : public Card, public CardSessions, public Chosen {
 public:
-	// конструктор
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	MainScreen(Singleton*);
 
 	bool CheckStr(char*, int);
 	void Operation() {
 		Chosen::Operation();
 	}
-	// проверка пин-кода при входе в банкомат
+	// РїСЂРѕРІРµСЂРєР° РїРёРЅ-РєРѕРґР° РїСЂРё РІС…РѕРґРµ РІ Р±Р°РЅРєРѕРјР°С‚
 	bool CheckPin(Singleton*, int, Card&);
 };
