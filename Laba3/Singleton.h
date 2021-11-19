@@ -16,9 +16,9 @@ protected:
 	
 
 public:
-	//проверка, не создан ли экземпляр
+	//РїСЂРѕРІРµСЂРєР°, РЅРµ СЃРѕР·РґР°РЅ Р»Рё СЌРєР·РµРјРїР»СЏСЂ
 	static Singleton* instance() {
-		if (_instance == nullptr) { //если нет
+		if (_instance == nullptr) { //РµСЃР»Рё РЅРµС‚
 			_instance = new Singleton();
 			return _instance;
 		}
@@ -34,12 +34,12 @@ public:
 		if (record) {
 			record << "Operation type: " << s << endl;
 
-			record << "Дата: ";
+			record << "Р”Р°С‚Р°: ";
 			if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 			else record << t->tm_mday << ".";
 			record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-			record << "Время: ";
+			record << "Р’СЂРµРјСЏ: ";
 			if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 			else record << t->tm_hour << ":";
 			if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -64,12 +64,12 @@ public:
 		if (record) {
 			record << "Operation type: " << s << endl;
 
-			record << "Дата: ";
+			record << "Р”Р°С‚Р°: ";
 			if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 			else record << t->tm_mday << ".";
 			record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-			record << "Время: ";
+			record << "Р’СЂРµРјСЏ: ";
 			if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 			else record << t->tm_hour << ":";
 			if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -86,9 +86,10 @@ public:
 		record.close();
 	}
 
-	//деструктор
+	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 	~Singleton() {
 		delete _instance;
 	}
 };
+
 
