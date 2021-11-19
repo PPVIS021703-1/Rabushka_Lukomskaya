@@ -6,32 +6,32 @@
 
 using namespace std;
 
-// вывод на экран
+// РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 void Currency::Print(Singleton* log) {
-	cout << "\tКУРС ВАЛЮТ" << endl << endl;
-	/*cout << "\t" << kazah << kazah_t << endl;
-	cout << "\t" << kvacha << kvacha_t << endl;
-	cout << "\t" << kirgiz << kirgiz_t << endl;
-	cout << "\t" << ukrain << ukrain_t << endl;
-	cout << "\t" << myanma << myanma_t << endl;*/
+	cout << "\tРљРЈР РЎ Р’РђР›Р®Рў" << endl << endl;
+	cout << "\t" << GetKaz() << ".00 (РєР°Р·Р°С…СЃС‚Р°РЅСЃРєРёР№ С‚РµРЅРіРµ)" << endl;
+	cout << "\t" << GetKvacha() << ".00 (Р·Р°РјР±РёР№СЃРєР°СЏ РєРІР°С‡Р°)" << endl;
+	cout << "\t" << GetKirgiz() << ".00 (РєРёСЂРіРёР·СЃРєР°СЏ СЃРѕРјР°)" << endl;
+	cout << "\t" << GetUkrain() << ".00 (СѓРєСЂР°РёРЅСЃРєР°СЏ РіСЂРёРІРЅР°)" << endl;
+	cout << "\t" << GetMyanma() << ".00 (РјСЊСЏРЅРјР°РЅСЃРєРёР№ РєСЊСЏС‚)" << endl;
 	
-	log->SingletonOperation("Вывод курса валют", 1);
+	log->SingletonOperation("Р’С‹РІРѕРґ РєСѓСЂСЃР° РІР°Р»СЋС‚", 1);
 	system("pause");
 	system("cls");
 }
 
-// обмен валют
+// РѕР±РјРµРЅ РІР°Р»СЋС‚
 double Currency::Choice() {
 	int a;
 	double value;
-	cout << "\tВЫБЕРИТЕ ВАЛЮТУ" << endl << endl;
-	cout << "\t1 - " << GetKaz() << endl << "\t*минимальная доступная сумма: 1740 тенге" << endl;
-	/*cout << "\t2 - " << kvacha << kvacha_t << endl << "\t*минимальная доступная сумма: 70 квач" << endl;;
-	cout << "\t3 - " << kirgiz << kirgiz_t << endl << "\t*минимальная доступная сумма: 350 сом" << endl;;
-	cout << "\t4 - " << ukrain << ukrain_t << endl << "\t*минимальная доступная сумма: 110 гривен" << endl;;
-	cout << "\t5 - " << myanma << myanma_t << endl << "\t*минимальная доступная сумма: 7770 кьят" << endl;*/
+	cout << "\tР’Р«Р‘Р•Р РРўР• Р’РђР›Р®РўРЈ" << endl << endl;
+	cout << "\t1 - " << GetKaz() << endl << "\t*РјРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 1740 С‚РµРЅРіРµ" << endl;
+	cout << "\t2 - " << GetKvacha() << endl << "\t*РјРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 70 РєРІР°С‡" << endl;;
+	cout << "\t3 - " << GetKirgiz() << endl << "\t*РјРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 350 СЃРѕРј" << endl;;
+	cout << "\t4 - " << GetUkrain() << endl << "\t*РјРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 110 РіСЂРёРІРµРЅ" << endl;;
+	cout << "\t5 - " << GetMyanma() << endl << "\t*РјРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 7770 РєСЊСЏС‚" << endl;
 	cin >> a;
-	cout << "\tВведите сумму, которую желаете снять (в выбранной валюте): " << endl;
+	cout << "\tР’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ, РєРѕС‚РѕСЂСѓСЋ Р¶РµР»Р°РµС‚Рµ СЃРЅСЏС‚СЊ (РІ РІС‹Р±СЂР°РЅРЅРѕР№ РІР°Р»СЋС‚Рµ): " << endl;
 	cin >> value;
 	
 	switch (a)
@@ -39,81 +39,70 @@ double Currency::Choice() {
 	case 1: {
 
 		if (value < 1740) {
-			cout << "\tМинимальная доступная сумма: 1740 тенге. Попробуйте еще раз позже!" << endl << endl;
+			cout << "\tРњРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 1740 С‚РµРЅРіРµ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ!" << endl << endl;
 			value = 0;
 			break;
 		}
-		value = value / Currency::GetKaz();
+		value = value / GetKaz();
 
 		break;
 	}
 	case 2: {
 		if (value < 70) {
-			cout << "\tМинимальная доступная сумма: 70 квач. Попробуйте еще раз позже!" << endl << endl;
+			cout << "\tРњРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 70 РєРІР°С‡. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ!" << endl << endl;
 			value = 0;
 			break;
 		}
-		//value /= kvacha;
+		value /= GetKvacha();
 		break;
 	}
 	case 3: {
 		if (value < 350) {
-			cout << "\tМинимальная доступная сумма: 350 сом. Попробуйте еще раз позже!" << endl << endl;
+			cout << "\tРњРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 350 СЃРѕРј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ!" << endl << endl;
 			value = 0;
 			break;
 		}
-		//value /= kirgiz;
+		value /= GetKirgiz();
 		break;
 	}
 	case 4: {
 		if (value < 110) {
-			cout << "\tМинимальная доступная сумма: 110 гривен. Попробуйте еще раз позже!" << endl << endl;
+			cout << "\tРњРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 110 РіСЂРёРІРµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ!" << endl << endl;
 			value = 0;
 			break;
 		}
-		//value /= ukrain;
+		value /= GetUkrain();
 		break;
 	}
 	case 5: {
 		if (value < 7770) {
-			cout << "\tМинимальная доступная сумма: 7770 кьят. Попробуйте еще раз позже!" << endl << endl;
+			cout << "\tРњРёРЅРёРјР°Р»СЊРЅР°СЏ РґРѕСЃС‚СѓРїРЅР°СЏ СЃСѓРјРјР°: 7770 РєСЊСЏС‚. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ!" << endl << endl;
 			value = 0;
 			break;
 		}
-		//value /= myanma;
+		value /= GetMyanma();
 		break;
 	}
 	default:
-		cout << "\tНеверный номер операции! Попробуйте еще раз." << endl << endl;
+		cout << "\tРќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РѕРїРµСЂР°С†РёРё! РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·." << endl << endl;
 		break;
 	}
 	
 	return value;
 }
 
-// снять с карточки 
+// СЃРЅСЏС‚СЊ СЃ РєР°СЂС‚РѕС‡РєРё 
 void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 	card.CopyData();
 	
 	try {
 		if (money > card.GetBalance() || money < 0) {
-			throw Exception("Недопустимый вид ввода", "Обмен валют");
+			throw Exception("РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ РІРёРґ РІРІРѕРґР°", "РћР±РјРµРЅ РІР°Р»СЋС‚");
 		}
 		else {
 
 			double new_money = card.GetBalance() - money;
 
-			/*if (record_) {
-				record_ << card.GetNumber() << endl;
-				record_ << card.GetCardData() << endl;
-				record_ << card.GetHolder() << endl;
-				record_ << card.GetCardPin() << endl;
-				record_ << card.GetCardCvv() << endl;
-				card.SetBalance(new_money);
-				record_ << new_money << endl;
-			}*/
-
-			
 			string card_number = "no";
 			string card_holder = "no";
 			string card_data = "no";
@@ -123,9 +112,7 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 			string empty;
 			int k1 = 0, l = card.GetCardChosen() - 1;
 			cout << l << endl;
-			//cout << l;
-			//system("pause");
-			//cout << chosen << endl;
+			
 			ifstream from_card("newcard.txt");
 			ofstream record_("card.txt");
 
@@ -146,7 +133,7 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 							record_ << card.GetCardCvv() << endl;
 							card.SetBalance(new_money);
 							record_ << new_money << endl;
-							//break;
+							
 						}
 						else {
 							getline(from_card, card_number);
@@ -174,12 +161,12 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 			record_.close();
 
 			cout << "" << endl;
-			log->SingletonOperation("Выдыча наличных: обмен валют", 1);
+			log->SingletonOperation("Р’С‹РґС‹С‡Р° РЅР°Р»РёС‡РЅС‹С…: РѕР±РјРµРЅ РІР°Р»СЋС‚", 1);
 			PauseF();
-			cout << "\tЗаберите ваши деньги!" << endl << endl;
+			cout << "\tР—Р°Р±РµСЂРёС‚Рµ РІР°С€Рё РґРµРЅСЊРіРё!" << endl << endl;
 			PauseF();
-			cout << endl << "\tЖелаете забрать чек? " << endl;
-			cout << "\t1 - Да" << endl << "\t2 - Нет" << endl;
+			cout << endl << "\tР–РµР»Р°РµС‚Рµ Р·Р°Р±СЂР°С‚СЊ С‡РµРє? " << endl;
+			cout << "\t1 - Р”Р°" << endl << "\t2 - РќРµС‚" << endl;
 			int k;
 			cin >> k;
 			switch (k) {
@@ -188,24 +175,24 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 				tm* t = new tm;
 				localtime_s(t, &now);
 
-				cout << "\tЗаберите ваш чек!" << endl << endl;
+				cout << "\tР—Р°Р±РµСЂРёС‚Рµ РІР°С€ С‡РµРє!" << endl << endl;
 				cout << "\t--------------------" << endl;
-				cout << "\tКод операции: 003" << endl;
-				cout << "\tДата: ";
+				cout << "\tРљРѕРґ РѕРїРµСЂР°С†РёРё: 003" << endl;
+				cout << "\tР”Р°С‚Р°: ";
 				if (t->tm_mday < 10) cout << "0" << t->tm_mday << ".";
 				else cout << t->tm_mday << ".";
 				cout << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-				cout << "\tВремя: ";
+				cout << "\tР’СЂРµРјСЏ: ";
 				if (t->tm_hour < 10) cout << "0" << t->tm_hour << ":";
 				else cout << t->tm_hour << ":";
 				if (t->tm_min < 10) cout << "0" << t->tm_min << ":";
 				else cout << t->tm_min << ":";
 				if (t->tm_sec < 10) cout << "0" << t->tm_sec << endl;
 				else cout << t->tm_sec << endl;
-				cout << "\tСумма выдачи: " << money << endl;
+				cout << "\tРЎСѓРјРјР° РІС‹РґР°С‡Рё: " << money << endl;
 				cout << "\t--------------------" << endl;
-				log->SingletonOperation("Выдача чека", 1);
+				log->SingletonOperation("Р’С‹РґР°С‡Р° С‡РµРєР°", 1);
 				PauseF();
 				cout << endl;
 				break;
@@ -219,7 +206,7 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 	}
 	catch (Exception& exception) {
 		cerr << exception.what() << endl << endl;
-		log->SingletonOperation("Выдыча наличных: обмен валют", 0);
+		log->SingletonOperation("Р’С‹РґС‹С‡Р° РЅР°Р»РёС‡РЅС‹С…: РѕР±РјРµРЅ РІР°Р»СЋС‚", 0);
 		ofstream record("card.txt");
 		ifstream read("newcard.txt");
 
@@ -263,7 +250,7 @@ void Currency::MoneyOut(Card& card,double money, Singleton* log) {
 	
 }
 
-// запись в выписку
+// Р·Р°РїРёСЃСЊ РІ РІС‹РїРёСЃРєСѓ
 void Currency::ToFileFrom(Card& card, double money) {
 	ofstream record("statement.txt", ios::app);
 
@@ -273,14 +260,14 @@ void Currency::ToFileFrom(Card& card, double money) {
 		localtime_s(t, &now);
 
 		record << "\t--------------------------------" << endl;
-		record << "\tСнятие средств:" << endl;
+		record << "\tРЎРЅСЏС‚РёРµ СЃСЂРµРґСЃС‚РІ:" << endl;
 
-		record << "Дата: ";
+		record << "Р”Р°С‚Р°: ";
 		if (t->tm_mday < 10) record << "0" << t->tm_mday << ".";
 		else record << t->tm_mday << ".";
 		record << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
-		record << "Время: ";
+		record << "Р’СЂРµРјСЏ: ";
 		if (t->tm_hour < 10) record << "0" << t->tm_hour << ":";
 		else record << t->tm_hour << ":";
 		if (t->tm_min < 10) record << "0" << t->tm_min << ":";
@@ -288,9 +275,9 @@ void Currency::ToFileFrom(Card& card, double money) {
 		if (t->tm_sec < 10) record << "0" << t->tm_sec << endl;
 		else record << t->tm_sec << endl;
 
-		record << "\tНомер карты : " << card.GetNumber() << endl;
-		record << "\tСумма операции: " << money << endl;
-		record << "\tОстаток средств: " << card.GetBalance() << endl;
+		record << "\tРќРѕРјРµСЂ РєР°СЂС‚С‹ : " << card.GetNumber() << endl;
+		record << "\tРЎСѓРјРјР° РѕРїРµСЂР°С†РёРё: " << money << endl;
+		record << "\tРћСЃС‚Р°С‚РѕРє СЃСЂРµРґСЃС‚РІ: " << card.GetBalance() << endl;
 		record << "\t--------------------------------" << endl;
 	}
 
