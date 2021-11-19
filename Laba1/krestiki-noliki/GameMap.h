@@ -4,37 +4,37 @@
 
 using namespace std;
 
-struct Field2 {//информация о координатах
+struct Field2 {//РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕРѕСЂРґРёРЅР°С‚Р°С…
 	int x, y;
 };
 
 class GameMap
 {
 private:
-	int** map;//матрица - карта поля
-	Field2 size;//размер поля
+	int** map;//РјР°С‚СЂРёС†Р° - РєР°СЂС‚Р° РїРѕР»СЏ
+	Field2 size;//СЂР°Р·РјРµСЂ РїРѕР»СЏ
 
-	int length;//длина выигрышной комбинации
+	int length;//РґР»РёРЅР° РІС‹РёРіСЂС‹С€РЅРѕР№ РєРѕРјР±РёРЅР°С†РёРё
 
 public:
-	GameMap(); //конструктор
+	GameMap(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	GameMap(Field2, int);
 	GameMap(int, int, int);
-	~GameMap();  //деструктор
+	~GameMap();  //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	bool SetPosition(Field2, int); //задать позицию
+	bool SetPosition(Field2, int); //Р·Р°РґР°С‚СЊ РїРѕР·РёС†РёСЋ
 	bool SetPosition(int, int, int);
-	bool IsEmpty(Field2); //проверка свободна ли позиция
-	bool IsEmpty(int, int);  //проверка на свободную ячейку
+	bool IsEmpty(Field2); //РїСЂРѕРІРµСЂРєР° СЃРІРѕР±РѕРґРЅР° Р»Рё РїРѕР·РёС†РёСЏ
+	bool IsEmpty(int, int);  //РїСЂРѕРІРµСЂРєР° РЅР° СЃРІРѕР±РѕРґРЅСѓСЋ СЏС‡РµР№РєСѓ
 	void SetMap(Field2, int);
-	void SetMap(int, int, int);  //получаем некоторые значения карты
+	void SetMap(int, int, int);  //РїРѕР»СѓС‡Р°РµРј РЅРµРєРѕС‚РѕСЂС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РєР°СЂС‚С‹
 	int GetValue(int, int);
-	int GetValue(Field2); //получить значения
+	int GetValue(Field2); //РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ
 	Field2 GetSize() {
 		return size;
 	}
-	int CheckList(vector<int> a); //проверка кто победил
-	int CheckWinner(); //выиграл или нет
-	bool CanMove(); //есть ли ходы
+	int CheckList(vector<int> a); //РїСЂРѕРІРµСЂРєР° РєС‚Рѕ РїРѕР±РµРґРёР»
+	int CheckWinner(); //РІС‹РёРіСЂР°Р» РёР»Рё РЅРµС‚
+	bool CanMove(); //РµСЃС‚СЊ Р»Рё С…РѕРґС‹
 };
 
