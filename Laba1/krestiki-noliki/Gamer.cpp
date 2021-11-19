@@ -1,6 +1,6 @@
 #include "Gamer.h"
 
-void Gamer::SetField(GamerStatus mode, int m) //проверяем в каком режиме
+void Gamer::SetField(GamerStatus mode, int m) //РїСЂРѕРІРµСЂСЏРµРј РІ РєР°РєРѕРј СЂРµР¶РёРјРµ
 {
 	if (mode == 0)
 	{
@@ -16,6 +16,6 @@ void Gamer::SetField(GamerStatus mode, int m) //проверяем в каком режиме
 	}
 	else status = Player2;
 
-	mark = m;// метка (1 - крестики/ 2 - нолики)
+	mark = m;// РјРµС‚РєР° (1 - РєСЂРµСЃС‚РёРєРё/ 2 - РЅРѕР»РёРєРё)
 }
 
