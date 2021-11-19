@@ -36,16 +36,6 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 
 			double new_money = card.GetBalance() - money;
 
-			/*if (record_) {
-				record_ << card.GetNumber() << endl;
-				record_ << card.GetCardData() << endl;
-				record_ << card.GetHolder() << endl;
-				record_ << card.GetCardPin() << endl;
-				record_ << card.GetCardCvv() << endl;
-				record_ << new_money << endl;
-				card.SetBalance(new_money);
-			}*/
-
 
 			string card_number = "no";
 			string card_holder = "no";
@@ -55,10 +45,7 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 			double card_balance;
 			string empty;
 			int k1 = 0, l = card.GetCardChosen() - 1;
-			//cout << l << endl;
-			//cout << l;
-			//system("pause");
-			//cout << chosen << endl;
+		
 			ifstream from_card("newcard.txt");
 			ofstream record_("card.txt");
 
@@ -79,7 +66,7 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 							record_ << card.GetCardCvv() << endl;
 							card.SetBalance(new_money);
 							record_ << new_money << endl;
-							//break;
+							
 						}
 						else {
 							getline(from_card, card_number);
@@ -126,17 +113,17 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 				cout << "\t--------------------" << endl;
 				cout << "\tКод операции: 002" << endl;
 				cout << "\tДата: ";
-				if (t->tm_mday < 10) cout << "0" << t->tm_mday << ".";
-				else cout << t->tm_mday << ".";
-				cout << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
+				if (t->tm_mday < 10) cout << "\t0" << t->tm_mday << ".";
+				else cout << "\t" << t->tm_mday << ".";
+				cout << "\t" << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
 				cout << "\tВремя: ";
-				if (t->tm_hour < 10) cout << "0" << t->tm_hour << ":";
-				else cout << t->tm_hour << ":";
-				if (t->tm_min < 10) cout << "0" << t->tm_min << ":";
-				else cout << t->tm_min << ":";
-				if (t->tm_sec < 10) cout << "0" << t->tm_sec << endl;
-				else cout << t->tm_sec << endl;
+				if (t->tm_hour < 10) cout << "\t0" << t->tm_hour << ":";
+				else cout << "\t" << t->tm_hour << ":";
+				if (t->tm_min < 10) cout << "\t0" << t->tm_min << ":";
+				else cout << "\t" << t->tm_min << ":";
+				if (t->tm_sec < 10) cout << "\t0" << t->tm_sec << endl;
+				else cout << "\t" << t->tm_sec << endl;
 				
 				cout << "\tСумма выдачи: " << money << endl;
 				cout << "\t--------------------" << endl;
@@ -166,8 +153,6 @@ void GiveMoney::MoneyOut(Card& card, Singleton* log) {
 	}
 
 	ToFileFrom(card, money);
-	
-	//remove("newcard.txt");
 }
 
 // положить деньги на карточку
@@ -175,18 +160,8 @@ void GetMoney::MoneyIn(Card& card, Singleton* log) {
 	double money;
 	cout << "\tВставьте купюру: ";
 	cin >> money;
-	//ofstream record("card.txt");
+	
 	double new_money = card.GetBalance() + money;
-
-	/*if (record) {
-		record << card.GetNumber() << endl;
-		record << card.GetCardData() << endl;
-		record << card.GetHolder() << endl;
-		record << card.GetCardPin() << endl;
-		record << card.GetCardCvv() << endl;
-		record << new_money << endl;
-		card.SetBalance(new_money);
-	}*/
 
 
 
@@ -198,10 +173,7 @@ void GetMoney::MoneyIn(Card& card, Singleton* log) {
 	double card_balance;
 	string empty;
 	int k1 = 0, l = card.GetCardChosen() - 1;
-	//cout << l << endl;
-	//cout << l;
-	//system("pause");
-	//cout << chosen << endl;
+	
 	ifstream from_card("newcard.txt");
 	ofstream record_("card.txt");
 
@@ -287,18 +259,6 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 						
 						double new_money = card.GetBalance() - money;
 
-						/*if (record_) {
-							record_ << card.GetNumber() << endl;
-							record_ << card.GetCardData() << endl;
-							record_ << card.GetHolder() << endl;
-							record_ << card.GetCardPin() << endl;
-							record_ << card.GetCardCvv() << endl;
-							record_ << new_money << endl;
-							card.SetBalance(new_money);
-							ToFileFrom(card, money);
-						}*/
-
-
 						string card_number = "no";
 						string card_holder = "no";
 						string card_data = "no";
@@ -307,10 +267,7 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 						double card_balance;
 						string empty;
 						int k1 = 0, l = card.GetCardChosen() - 1;
-						//cout << l << endl;
-						//cout << l;
-						//system("pause");
-						//cout << chosen << endl;
+						
 						ifstream from_card("newcard.txt");
 						ofstream record_1("card.txt");
 
@@ -331,7 +288,7 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 										record_1 << card.GetCardCvv() << endl;
 										card.SetBalance(new_money);
 										record_1 << new_money << endl;
-										//break;
+										
 									}
 									else {
 										getline(from_card, card_number);
@@ -387,17 +344,17 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 									cout << "\t--------------------" << endl;
 									cout << "\tКод операции: 001" << endl;
 									cout << "Дата: ";
-									if (t->tm_mday < 10) cout << "0" << t->tm_mday << ".";
-									else cout << t->tm_mday << ".";
-									cout << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
+									if (t->tm_mday < 10) cout << "\t0" << t->tm_mday << ".";
+									else cout <<"\t" <<  t->tm_mday << ".";
+									cout << "\t" << 1 + t->tm_mon << "." << 1900 + t->tm_year << endl;
 
 									cout << "Время: ";
-									if (t->tm_hour < 10) cout << "0" << t->tm_hour << ":";
-									else cout << t->tm_hour << ":";
-									if (t->tm_min < 10) cout << "0" << t->tm_min << ":";
-									else cout << t->tm_min << ":";
-									if (t->tm_sec < 10) cout << "0" << t->tm_sec << endl;
-									else cout << t->tm_sec << endl;
+									if (t->tm_hour < 10) cout << "t0" << t->tm_hour << ":";
+									else cout << "\t" << t->tm_hour << ":";
+									if (t->tm_min < 10) cout << "\t0" << t->tm_min << ":";
+									else cout << "\t" << t->tm_min << ":";
+									if (t->tm_sec < 10) cout << "\t0" << t->tm_sec << endl;
+									else cout << "\t" << t->tm_sec << endl;
 
 									cout << "\tСчет получателя: " << acc_number << endl;
 									cout << "\tСумма перевода: " << money << endl;
@@ -434,7 +391,6 @@ void Payement::Pay(Card& card, Bankomat& bank) {
 	}
 	
 	record.close();
-	//system("cls");
 }
 
 // сменить пароль на карточке
@@ -449,8 +405,6 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 		if (old == old_pin) {
 			flag = true;
 			card.CopyData();
-			/*ifstream read("newcard.txt");
-			ofstream record("card.txt");*/
 			cout << "\tВведите новый пин-код: ";
 			try {
 				cin >> new_pin;
@@ -464,20 +418,6 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 				cerr << exception.what() << endl;
 			}
 
-			/*if (read) {
-				if (record) {
-					record << card.GetNumber() << endl;
-					record << card.GetCardData() << endl;
-					record << card.GetHolder() << endl;
-					record << card.GetCardPin() << endl;
-					record << card.GetCardCvv() << endl;
-					record << card.GetBalance() << endl;
-				}
-			}
-			read.close();
-			record.close();
-			remove("newcard.txt");*/
-
 
 			string card_number = "no";
 			string card_holder = "no";
@@ -487,10 +427,7 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 			double card_balance;
 			string empty;
 			int k1 = 0, l = card.GetCardChosen() - 1;
-			//cout << l << endl;
-			//cout << l;
-			//system("pause");
-			//cout << chosen << endl;
+			
 			ifstream from_card("newcard.txt");
 			ofstream record_("card.txt");
 
@@ -510,7 +447,7 @@ void ChangePin::ChangeCardPin(Card& card, int old, Singleton* log) {
 							record_ << card.GetCardPin() << endl;
 							record_ << card.GetCardCvv() << endl;
 							record_ << card.GetBalance() << endl;
-							//break;
+							
 						}
 						else {
 							getline(from_card, card_number);
