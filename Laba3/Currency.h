@@ -9,19 +9,33 @@ using namespace std;
 // CHANGE CURRENCY CLASS
 
 class Currency: public GiveMoney, public virtual Bank {
-private:
-	double kazah = 174, kvacha = 7, kirgiz = 35, ukrain = 11, myanma = 777;
-	string kazah_t = ".00 (казахстанский тенге)", kvacha_t = ".00 (замбийская квача)", kirgiz_t = ".00 (киргизская сома)", ukrain_t = ".00 (украинская гривна)", myanma_t = ".00 (мьянманский кьят)";
 
 public:
 	static double GetKaz() {
 		return 174;
 	}
-	// вывод на экран
+
+	static double GetKvacha() {
+		return 7;
+	}
+
+	static double GetKirgiz() {
+		return 35;
+	}
+
+	static double GetUkrain() {
+		return 11;
+	}
+
+	static double GetMyanma() {
+		return 777;
+	}
+
+	// РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
 	static void Print(Singleton*);
-	// для перемены на карточке
+	// РґР»СЏ РїРµСЂРµРјРµРЅС‹ РЅР° РєР°СЂС‚РѕС‡РєРµ
 	static void MoneyOut(Card&, double, Singleton*);
-	//выбор валюты
+	//РІС‹Р±РѕСЂ РІР°Р»СЋС‚С‹
 	static double Choice();
 
 	static void ToFileFrom(Card&, double);
