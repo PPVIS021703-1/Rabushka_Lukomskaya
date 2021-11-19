@@ -4,29 +4,29 @@
 using namespace std;
 
 enum GameMode {
-    PvP = 0, //игрок против игрока
-    PvE //игрок против компа
+    PvP = 0, //РёРіСЂРѕРє РїСЂРѕС‚РёРІ РёРіСЂРѕРєР°
+    PvE //РёРіСЂРѕРє РїСЂРѕС‚РёРІ РєРѕРјРїР°
 } gameMode;
 
-//общие данные 
+//РѕР±С‰РёРµ РґР°РЅРЅС‹Рµ 
 GameMap map;
 Gamer player1;
 Gamer player2;
 GamerStatus currentPlayer;
 Field2 selectedCellPlayer;
 
-//флажки
+//С„Р»Р°Р¶РєРё
 bool canPlay;
 bool endGame;
 
-//для компа
-vector<Field2> allMoves;//все возможные ходы
-int currentMoves; //количество ходов
+//РґР»СЏ РєРѕРјРїР°
+vector<Field2> allMoves;//РІСЃРµ РІРѕР·РјРѕР¶РЅС‹Рµ С…РѕРґС‹
+int currentMoves; //РєРѕР»РёС‡РµСЃС‚РІРѕ С…РѕРґРѕРІ
 
-// щапуск игры
+// С‰Р°РїСѓСЃРє РёРіСЂС‹
 System::Void Krestikinoliki::GameForm::GameForm_Load(System::Object^ sender, System::EventArgs^ e)
 {
-    //инициализация параметров
+    //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ
     if (selectedGameMode == 0) {
         gameMode = PvP;
     }
@@ -39,11 +39,11 @@ System::Void Krestikinoliki::GameForm::GameForm_Load(System::Object^ sender, Sys
 
 void Krestikinoliki::GameForm::GameLogic()
 {
-    //проверяем режим игры
+    //РїСЂРѕРІРµСЂСЏРµРј СЂРµР¶РёРј РёРіСЂС‹
     if (gameMode == PvE) {
-        //если ход компа
+        //РµСЃР»Рё С…РѕРґ РєРѕРјРїР°
         if (currentPlayer == Computer) {
-            StepAI(); //делаем ход
+            StepAI(); //РґРµР»Р°РµРј С…РѕРґ
         }
         Update();
     }
@@ -51,59 +51,59 @@ void Krestikinoliki::GameForm::GameLogic()
 
 void Krestikinoliki::GameForm::Update()
 {
-    //проверяем состояние игрового поля(победил ли кто-то)
+    //РїСЂРѕРІРµСЂСЏРµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ(РїРѕР±РµРґРёР» Р»Рё РєС‚Рѕ-С‚Рѕ)
     int state_game = map.CheckWinner();
     if (endGame) return;
 
     if (state_game == 1) {
         if (gameMode == PvP) {
             UpdateGameGrid();
-            MessageBox::Show("Поздравляем Игрока1 с победой!", "Победа!");
+            MessageBox::Show("РџРѕР·РґСЂР°РІР»СЏРµРј РРіСЂРѕРєР°1 СЃ РїРѕР±РµРґРѕР№!", "РџРѕР±РµРґР°!");
         }
         else {
             UpdateGameGrid();
-            MessageBox::Show("Человечество не потеряно!! С победой, Игрок!", "Победа!");
+            MessageBox::Show("Р§РµР»РѕРІРµС‡РµСЃС‚РІРѕ РЅРµ РїРѕС‚РµСЂСЏРЅРѕ!! РЎ РїРѕР±РµРґРѕР№, РРіСЂРѕРє!", "РџРѕР±РµРґР°!");
         }
         //UpdateGameGrid();
 
-        endGame = true;  //теперь игра точно окончена
+        endGame = true;  //С‚РµРїРµСЂСЊ РёРіСЂР° С‚РѕС‡РЅРѕ РѕРєРѕРЅС‡РµРЅР°
     }
     else if (state_game == 2) {
         if (gameMode == PvP) {
             UpdateGameGrid();
-            MessageBox::Show("Поздравляем Игрока2 с победой!!", "Победа!");
+            MessageBox::Show("РџРѕР·РґСЂР°РІР»СЏРµРј РРіСЂРѕРєР°2 СЃ РїРѕР±РµРґРѕР№!!", "РџРѕР±РµРґР°!");
         }
         else {
             UpdateGameGrid();
-            MessageBox::Show("Искусственный интеллект победил!! Человечество уже не то.", "Машины, вперед!");
+            MessageBox::Show("РСЃРєСѓСЃСЃС‚РІРµРЅРЅС‹Р№ РёРЅС‚РµР»Р»РµРєС‚ РїРѕР±РµРґРёР»!! Р§РµР»РѕРІРµС‡РµСЃС‚РІРѕ СѓР¶Рµ РЅРµ С‚Рѕ.", "РњР°С€РёРЅС‹, РІРїРµСЂРµРґ!");
         }
        // UpdateGameGrid();
 
-        endGame = true; //конец игры
+        endGame = true; //РєРѕРЅРµС† РёРіСЂС‹
     }
     else if (state_game == 3) {
-        MessageBox::Show("Естественный и искусственный интеллект пока не решили, кто умнее!", "Десятки лет развития технологий ради этого");
+        MessageBox::Show("Р•СЃС‚РµСЃС‚РІРµРЅРЅС‹Р№ Рё РёСЃРєСѓСЃСЃС‚РІРµРЅРЅС‹Р№ РёРЅС‚РµР»Р»РµРєС‚ РїРѕРєР° РЅРµ СЂРµС€РёР»Рё, РєС‚Рѕ СѓРјРЅРµРµ!", "Р”РµСЃСЏС‚РєРё Р»РµС‚ СЂР°Р·РІРёС‚РёСЏ С‚РµС…РЅРѕР»РѕРіРёР№ СЂР°РґРё СЌС‚РѕРіРѕ");
         UpdateGameGrid();
 
         endGame = true;
     }
 
     if (endGame) {
-        if (MessageBox::Show("Хотите запустить новую игру?", "Поиграем?", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
+        if (MessageBox::Show("РҐРѕС‚РёС‚Рµ Р·Р°РїСѓСЃС‚РёС‚СЊ РЅРѕРІСѓСЋ РёРіСЂСѓ?", "РџРѕРёРіСЂР°РµРј?", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
             NewGame();
         }
-        return;//выходим из метода
+        return;//РІС‹С…РѕРґРёРј РёР· РјРµС‚РѕРґР°
     }
 
-    //для AI
+    //РґР»СЏ AI
     if (gameMode == PvE) {
-        if (currentPlayer == Computer) { //если ходил комп, то теперь ходит игрок
-            status->Text = "Ход: Игрок!";
+        if (currentPlayer == Computer) { //РµСЃР»Рё С…РѕРґРёР» РєРѕРјРї, С‚Рѕ С‚РµРїРµСЂСЊ С…РѕРґРёС‚ РёРіСЂРѕРє
+            status->Text = "РҐРѕРґ: РРіСЂРѕРє!";
             currentPlayer = Player;
             return;
         }
         else {
-            status->Text = "Ход: Компьютер!";
+            status->Text = "РҐРѕРґ: РљРѕРјРїСЊСЋС‚РµСЂ!";
             currentPlayer = Computer;
 
             GameLogic();
@@ -113,11 +113,11 @@ void Krestikinoliki::GameForm::Update()
     }
     else {
         if (currentPlayer == Player1) {
-            status->Text = "Ход: 0";//нолик
+            status->Text = "РҐРѕРґ: 0";//РЅРѕР»РёРє
             currentPlayer = Player2;
         }
         else {
-            status->Text = "Ход: Х"; //крестик
+            status->Text = "РҐРѕРґ: РҐ"; //РєСЂРµСЃС‚РёРє
             currentPlayer = Player1;
         }
     }
@@ -128,14 +128,14 @@ void Krestikinoliki::GameForm::Update()
 
 void Krestikinoliki::GameForm::NewGame()
 {
-    //инициализация данных
+    //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґР°РЅРЅС‹С…
     map.SetMap(rows, columns, length);
     rand = gcnew Random();
     endGame = false;
 
     CreateGameGrid(map.GetSize());
 
-    //инициализация всех возможных ходов AI
+    //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІСЃРµС… РІРѕР·РјРѕР¶РЅС‹С… С…РѕРґРѕРІ AI
     currentMoves = 0;
     allMoves.clear();
     Field2 buf;
@@ -144,24 +144,24 @@ void Krestikinoliki::GameForm::NewGame()
             buf.x = i;
             buf.y = j;
 
-            allMoves.push_back(buf);//координаты всех точек, куда походить
+            allMoves.push_back(buf);//РєРѕРѕСЂРґРёРЅР°С‚С‹ РІСЃРµС… С‚РѕС‡РµРє, РєСѓРґР° РїРѕС…РѕРґРёС‚СЊ
         }
     }
 
-    //перемещиваем все ходы несколько раз
-    //чтобы не прийти в одну и ту же точку
+    //РїРµСЂРµРјРµС‰РёРІР°РµРј РІСЃРµ С…РѕРґС‹ РЅРµСЃРєРѕР»СЊРєРѕ СЂР°Р·
+    //С‡С‚РѕР±С‹ РЅРµ РїСЂРёР№С‚Рё РІ РѕРґРЅСѓ Рё С‚Сѓ Р¶Рµ С‚РѕС‡РєСѓ
     int num_mixing = rand->Next(1, 10);
     for (int i = 0; i < num_mixing; i++) {
         random_shuffle(allMoves.begin(), allMoves.end());
     }
-    //проверяем очередность и режим
-    int state_game = rand->Next(1, 3); //выдаем рандомное число от  1 до 2
+    //РїСЂРѕРІРµСЂСЏРµРј РѕС‡РµСЂРµРґРЅРѕСЃС‚СЊ Рё СЂРµР¶РёРј
+    int state_game = rand->Next(1, 3); //РІС‹РґР°РµРј СЂР°РЅРґРѕРјРЅРѕРµ С‡РёСЃР»Рѕ РѕС‚  1 РґРѕ 2
     if (state_game == 1) {
         if (gameMode == PvE) {
-            player1.SetField(Player, 1); //крестики
-            player2.SetField(Computer, 2); //нолики
+            player1.SetField(Player, 1); //РєСЂРµСЃС‚РёРєРё
+            player2.SetField(Computer, 2); //РЅРѕР»РёРєРё
 
-            status->Text = "Ход: Игрок!";
+            status->Text = "РҐРѕРґ: РРіСЂРѕРє!";
 
             currentPlayer = Player;
         }
@@ -169,17 +169,17 @@ void Krestikinoliki::GameForm::NewGame()
             player1.SetField(Player1, 1);
             player2.SetField(Player2, 2);
 
-            status->Text = "Ход: Х!";
+            status->Text = "РҐРѕРґ: РҐ!";
 
             currentPlayer = Player1;
         }
     }
     else if (state_game == 2) {
         if (gameMode == PvE) {
-            player1.SetField(Player, 1); //крестики
-            player2.SetField(Computer, 2); //нолики
+            player1.SetField(Player, 1); //РєСЂРµСЃС‚РёРєРё
+            player2.SetField(Computer, 2); //РЅРѕР»РёРєРё
 
-            status->Text = "Ход: Компьютер!";
+            status->Text = "РҐРѕРґ: РљРѕРјРїСЊСЋС‚РµСЂ!";
 
             currentPlayer = Computer;
 
@@ -190,29 +190,29 @@ void Krestikinoliki::GameForm::NewGame()
             player1.SetField(Player1, 1);
             player2.SetField(Player2, 2);
 
-            status->Text = "Ход: 0!";
+            status->Text = "РҐРѕРґ: 0!";
 
             currentPlayer = Player2;
         }
     }
     else {
-        MessageBox::Show("Ошибка генерации первоначального выбора игрока!", "Ошибка!");
+        MessageBox::Show("РћС€РёР±РєР° РіРµРЅРµСЂР°С†РёРё РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРіРѕ РІС‹Р±РѕСЂР° РёРіСЂРѕРєР°!", "РћС€РёР±РєР°!");
         return;
     }
 }
 
 void Krestikinoliki::GameForm::StepAI()
 {
-    //проверяем, есть ли ещё ходы
+    //РїСЂРѕРІРµСЂСЏРµРј, РµСЃС‚СЊ Р»Рё РµС‰С‘ С…РѕРґС‹
     if (currentMoves < allMoves.size()) {
-        //проверяем текущий ход
+        //РїСЂРѕРІРµСЂСЏРµРј С‚РµРєСѓС‰РёР№ С…РѕРґ
         if (map.IsEmpty(allMoves[currentMoves])) {
-            //если ячейка свободна, делаем ход
+            //РµСЃР»Рё СЏС‡РµР№РєР° СЃРІРѕР±РѕРґРЅР°, РґРµР»Р°РµРј С…РѕРґ
             map.SetPosition(allMoves[currentMoves], player2.GetMark());
             currentMoves++;
         }
         else {
-            //если клетка занята, переходим на другую
+            //РµСЃР»Рё РєР»РµС‚РєР° Р·Р°РЅСЏС‚Р°, РїРµСЂРµС…РѕРґРёРј РЅР° РґСЂСѓРіСѓСЋ
             currentMoves++;
             StepAI();
         }
@@ -237,11 +237,11 @@ void Krestikinoliki::GameForm::UpdateGameGrid()
 
 void Krestikinoliki::GameForm::CreateGameGrid(Field2 size)
 {
-    //очищаем таблицу
+    //РѕС‡РёС‰Р°РµРј С‚Р°Р±Р»РёС†Сѓ
     dataGridView->Rows->Clear();
     dataGridView->Columns->Clear();
 
-    //создаем столбцы
+    //СЃРѕР·РґР°РµРј СЃС‚РѕР»Р±С†С‹
     for (int i = 0; i < size.x; i++) {
         DataGridViewButtonColumn^ column = gcnew DataGridViewButtonColumn();
         column->HeaderCell->Value = Convert::ToString(i + 1);
@@ -251,7 +251,7 @@ void Krestikinoliki::GameForm::CreateGameGrid(Field2 size)
         dataGridView->Columns->Add(column);
     }
 
-    //создаем строки
+    //СЃРѕР·РґР°РµРј СЃС‚СЂРѕРєРё
     for (int j = 0; j < size.y; j++) {
         dataGridView->Rows->Add();
         dataGridView->Rows[j]->HeaderCell->Value = Convert::ToString(j + 1);
@@ -261,34 +261,34 @@ void Krestikinoliki::GameForm::CreateGameGrid(Field2 size)
 
 System::Void Krestikinoliki::GameForm::SetPositionPlayer(Field2 cell)
 {
-    //проверяем режим игры
+    //РїСЂРѕРІРµСЂСЏРµРј СЂРµР¶РёРј РёРіСЂС‹
     if (gameMode == PvE) {
-        //проверяем очередность игрока
+        //РїСЂРѕРІРµСЂСЏРµРј РѕС‡РµСЂРµРґРЅРѕСЃС‚СЊ РёРіСЂРѕРєР°
         if (currentPlayer == Player) {
-            //делаем ход
+            //РґРµР»Р°РµРј С…РѕРґ
             if (!map.SetPosition(cell, player1.GetMark())) {
-                MessageBox::Show("Данная позиция занята!", "Внимание!");
+                MessageBox::Show("Р”Р°РЅРЅР°СЏ РїРѕР·РёС†РёСЏ Р·Р°РЅСЏС‚Р°!", "Р’РЅРёРјР°РЅРёРµ!");
                 return;
             }
         }
         else {
-            MessageBox::Show("Еще не ваша очередь!", "Внимание!");
+            MessageBox::Show("Р•С‰Рµ РЅРµ РІР°С€Р° РѕС‡РµСЂРµРґСЊ!", "Р’РЅРёРјР°РЅРёРµ!");
             return;
         }
     }
-    else {//если мы в PvP режиме
-        //проверяяем, кто ходит
+    else {//РµСЃР»Рё РјС‹ РІ PvP СЂРµР¶РёРјРµ
+        //РїСЂРѕРІРµСЂСЏСЏРµРј, РєС‚Рѕ С…РѕРґРёС‚
         if (currentPlayer == Player1) {
-            //делаем ход
+            //РґРµР»Р°РµРј С…РѕРґ
             if (!map.SetPosition(cell, player1.GetMark())) {
-                MessageBox::Show("Данная позиция занята!", "Внимание!");
+                MessageBox::Show("Р”Р°РЅРЅР°СЏ РїРѕР·РёС†РёСЏ Р·Р°РЅСЏС‚Р°!", "Р’РЅРёРјР°РЅРёРµ!");
                 return;
             }
         }
         else {
-            //делаем ход
+            //РґРµР»Р°РµРј С…РѕРґ
             if (!map.SetPosition(cell, player2.GetMark())) {
-                MessageBox::Show("Данная позиция занята!", "Внимание!");
+                MessageBox::Show("Р”Р°РЅРЅР°СЏ РїРѕР·РёС†РёСЏ Р·Р°РЅСЏС‚Р°!", "Р’РЅРёРјР°РЅРёРµ!");
                 return;
             }
         }
@@ -298,42 +298,42 @@ System::Void Krestikinoliki::GameForm::SetPositionPlayer(Field2 cell)
 }
 
 
-System::Void Krestikinoliki::GameForm::менюToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void Krestikinoliki::GameForm::РјРµРЅСЋToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
     return System::Void();
 }
 
-System::Void Krestikinoliki::GameForm::новаяИграToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void Krestikinoliki::GameForm::РЅРѕРІР°СЏРРіСЂР°ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-    if (MessageBox::Show("Продолжить?", "Внимание!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
+    if (MessageBox::Show("РџСЂРѕРґРѕР»Р¶РёС‚СЊ?", "Р’РЅРёРјР°РЅРёРµ!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
         NewGame();
     }
 }
 
-System::Void Krestikinoliki::GameForm::вернутьсяToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void Krestikinoliki::GameForm::РІРµСЂРЅСѓС‚СЊСЃСЏToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-    if (MessageBox::Show("Продолжить?", "Внимание!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
+    if (MessageBox::Show("РџСЂРѕРґРѕР»Р¶РёС‚СЊ?", "Р’РЅРёРјР°РЅРёРµ!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
         StartForm^ form = gcnew StartForm();
         form->Show();
         this->Hide();
     }
 }
 
-System::Void Krestikinoliki::GameForm::выходToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void Krestikinoliki::GameForm::РІС‹С…РѕРґToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
-    if (MessageBox::Show("Подтвердить выход из игры?", "Внимание!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
+    if (MessageBox::Show("РџРѕРґС‚РІРµСЂРґРёС‚СЊ РІС‹С…РѕРґ РёР· РёРіСЂС‹?", "Р’РЅРёРјР°РЅРёРµ!", MessageBoxButtons::YesNo) == Windows::Forms::DialogResult::Yes) {
         Application::Exit();
     }
 }
 
 System::Void Krestikinoliki::GameForm::dataGridView_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
-    auto senderGrid = (DataGridView^)sender; //преобразуем полученный объект в таблицу
+    auto senderGrid = (DataGridView^)sender; //РїСЂРµРѕР±СЂР°Р·СѓРµРј РїРѕР»СѓС‡РµРЅРЅС‹Р№ РѕР±СЉРµРєС‚ РІ С‚Р°Р±Р»РёС†Сѓ
 
-    //запоминаем индексы выбранной ячейки
+    //Р·Р°РїРѕРјРёРЅР°РµРј РёРЅРґРµРєСЃС‹ РІС‹Р±СЂР°РЅРЅРѕР№ СЏС‡РµР№РєРё
     selectedCellPlayer.x = e->RowIndex;
     selectedCellPlayer.y = e->ColumnIndex;
 
-    //делаем ход
+    //РґРµР»Р°РµРј С…РѕРґ
     SetPositionPlayer(selectedCellPlayer);
 }
