@@ -16,10 +16,10 @@ private:
 public:
 
 	virtual void PrintInfo() {
-		cout << "\t-----  Автор -----" << endl;
-		cout << "\tИмя автора: " << GetAuthorName() << endl;
-		cout << "\tГод рождения: " << GetAuthorYear() << endl;
-		cout << "\tКнига: " << GetBookName() << endl;
+		cout << "\t-----  РђРІС‚РѕСЂ -----" << endl;
+		cout << "\tРРјСЏ Р°РІС‚РѕСЂР°: " << GetAuthorName() << endl;
+		cout << "\tР“РѕРґ СЂРѕР¶РґРµРЅРёСЏ: " << GetAuthorYear() << endl;
+		cout << "\tРљРЅРёРіР°: " << GetBookName() << endl;
 	};
 	string GetAuthorName() {
 		return author_name;
@@ -39,7 +39,7 @@ public:
 	void SetBookName(string book) {
 		this->book_name = book;
 	}
-	virtual string GetNation() = 0;  //чисто виртуальный метод для абстрактного класса
+	virtual string GetNation() = 0;  //С‡РёСЃС‚Рѕ РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ РєР»Р°СЃСЃР°
 };
 
 
@@ -50,18 +50,18 @@ public:
 	British(string, int);
 	British(string);
 	British() {
-		SetAuthorName("Нет информации");
+		SetAuthorName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 		SetAuthorYear(0);
-		SetBookName("Нет информации");
+		SetBookName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 	};
 
 	void PrintInfo() override {
 		Author::PrintInfo();
-		cout << "\t----- " << "Английская литература" << " ------" << endl << endl;
+		cout << "\t----- " << "РђРЅРіР»РёР№СЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°" << " ------" << endl << endl;
 	}
 
 	virtual string GetNation() override {
-		return "Английская литература";
+		return "РђРЅРіР»РёР№СЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°";
 	}
 };
 
@@ -89,9 +89,9 @@ class American :private  Author {
 
 public:
 	American() {
-		SetAuthorName("Нет информации");
+		SetAuthorName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 		SetAuthorYear(0);
-		SetBookName("Нет информации");
+		SetBookName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 	};
 	American(string);
 	American(string, int);
@@ -99,10 +99,10 @@ public:
 
 	void PrintInfo() override {
 		Author::PrintInfo();
-		cout << "\t----- " << "Американская литература" << " ------" << endl << endl;
+		cout << "\t----- " << "РђРјРµСЂРёРєР°РЅСЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°" << " ------" << endl << endl;
 	}
 	string GetNation() override {
-		return "Американская литература";
+		return "РђРјРµСЂРёРєР°РЅСЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°";
 	}
 
 	string GetAuthorName() {
@@ -147,9 +147,9 @@ class Russian :protected Author {
 
 public:
 	Russian() {
-		SetAuthorName("Нет информации");
+		SetAuthorName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 		SetAuthorYear(0);
-		SetBookName("Нет информации");
+		SetBookName("РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё");
 	};
 	Russian(string);
 	Russian(string, int);
@@ -157,11 +157,11 @@ public:
 
 	void PrintInfo() override {
 		Author::PrintInfo();
-		cout << "\t----- " << "Русская литература" << " ------" << endl << endl;
+		cout << "\t----- " << "Р СѓСЃСЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°" << " ------" << endl << endl;
 	}
 
 	string GetNation() override {
-		return "Русская литература";
+		return "Р СѓСЃСЃРєР°СЏ Р»РёС‚РµСЂР°С‚СѓСЂР°";
 	}
 
 	string GetAuthorName() {
