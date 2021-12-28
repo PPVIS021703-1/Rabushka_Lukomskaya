@@ -8,12 +8,12 @@ template <class T>
 class GnomeSort {
 private:
     
-	T* arr;   //массив для сортировки
-	int size;  //размер массива
+	T* arr;   //РјР°СЃСЃРёРІ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
+	int size;  //СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 
 public:
 	
-    // для массива
+    // РґР»СЏ РјР°СЃСЃРёРІР°
     GnomeSort(T* a, int n) {
         this->size = n;
         arr = new T[n];
@@ -22,7 +22,7 @@ public:
         }
     }
 
-    // для вектора
+    // РґР»СЏ РІРµРєС‚РѕСЂР°
     GnomeSort(vector<T> a, int n) {
         this->size = n;
         arr = new T[n];
@@ -31,12 +31,12 @@ public:
         }
     }
    
-	// сортировка
+	// СЃРѕСЂС‚РёСЂРѕРІРєР°
     void Sort() {
         int index = 1; 
 
         while (index < size) {
-            if (arr[index - 1] < arr[index]) //для сортировки по убыванию поменяйте знак сравнения на >=
+            if (arr[index - 1] < arr[index]) //РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СѓР±С‹РІР°РЅРёСЋ РїРѕРјРµРЅСЏР№С‚Рµ Р·РЅР°Рє СЃСЂР°РІРЅРµРЅРёСЏ РЅР° >=
             {
                 index++;
             }
@@ -53,7 +53,7 @@ public:
         }
     }
 
-    // вывод на экран
+    // РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
     void Print() {
         for (int i = 0; i < size; i++) {
             cout << arr[i] << " ";
