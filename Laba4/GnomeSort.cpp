@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 	
-	int a[5] = { 6, 8, 3, 9, 11 };
+	int a[5] = { 6, 8, 3, 9, 11. 5 };
 	//double a[6] = { 2.1, 4.5, 7.3, 4.05, 2.16, 7.2 };
 	//vector<int> a = {6, 2, 5, 1, 3, 11};
 	//vector<double> a = {4.3, 4.7, 5.9, 2.3, 2.4};
